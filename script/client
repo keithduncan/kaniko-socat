@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo "Connecting to remote kaniko shell.
+
+Try sending:
+executor --build-arg IAM_SSH_AGENT_VERSION=0.2.1 --no-push
+"
+
+set -x
+
 docker run \
 	--rm \
 	-it \
