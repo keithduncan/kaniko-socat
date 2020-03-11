@@ -1,3 +1,9 @@
 #!/bin/bash
 
-docker run --rm -it -v kanikoctl:/kanikoctl alpine/socat STDOUT unix-connect:/kanikoctl/socket
+docker run \
+	--rm \
+	-it \
+	-v kanikoctl:/kanikoctl \
+	alpine/socat \
+		STDOUT \
+		unix-connect:/kanikoctl/socket
