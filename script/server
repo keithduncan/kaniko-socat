@@ -8,4 +8,4 @@ docker run \
 	-v kanikoctl:/kanikoctl \
 	kaniko-socat \
 		unix-listen:/kanikoctl/socket,fork \
-		'exec:executor --build-arg IAM_SSH_AGENT_VERSION=0.2.1 --no-push --context=/workspace,stderr'
+		'exec:executor --context=/workspace --build-arg IAM_SSH_AGENT_VERSION=0.2.1 --no-push,stderr'
