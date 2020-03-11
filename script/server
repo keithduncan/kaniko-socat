@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker run --rm -it --entrypoint /kaniko/socat -v /Users/keithduncan/Projects/iam-ssh-agent/agent/:/workspace -v kanikoctl:/kanikoctl kaniko-socat unix-listen:/kanikoctl/socket,fork 'exec:executor --build-arg IAM_SSH_AGENT_VERSION=0.2.1 --no-push --context=/workspace,stderr'

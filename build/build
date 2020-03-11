@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+function build_musl() {
+    cd /build
+
+    # Download
+    curl -LO http://www.musl-libc.org/releases/musl-${MUSL_VERSION}.tar.gz
+    tar zxvf musl-${MUSL_VERSION}.tar.gz
+    cd musl-${MUSL_VERSION}
+
+    # Build
+    ./configure
+    make -j4
+    make install
+}
+
+function build_socat() {
+    cd /build
+
+    # Download
+    curl -LO http://www.dest-unreach.org/socat/download/socat-${SOCAT_VERSION}.tar.gz
+    tar xzvf socat-${SOCAT_VERSION}.tar.gz
+    cd socat-${SOCAT_VERSION}
+
+    # Build
+    # NOTE: `NETDB_INTERNAL` is non-POSIX, and thus not defined by MUSL.
+    # We define it this way manually.
+    CC='/usr/local/musl/bin/musl-gcc -static' \
+        CFLAGS="-fPIC -I/build -DNETDB_INTERNAL=-1" \
+        CPPFLAGS="-DNETDB_INTERNAL=-1" \
+        LDFLAGS="" \
+        ./configure
+    make -j4
+    strip socat
+}
+
+build_musl
+build_socat
+
+echo "/build/socat-${SOCAT_VERSION}/socat"
+echo "** Finished **"
