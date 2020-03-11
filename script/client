@@ -5,5 +5,5 @@ docker run \
 	-it \
 	-v kanikoctl:/kanikoctl \
 	alpine/socat \
-		STDOUT \
+		STDIO \
 		unix-connect:/kanikoctl/socket
