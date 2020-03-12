@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo "Booting remote kaniko shell.
+
+Depends on a docker volume called kanikoctl, create with:
+docker volume create --label kanikoctl
+
+Connect using script/client.
+"
+
 set -x
 
 exec docker run \
