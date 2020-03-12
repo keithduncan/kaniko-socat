@@ -5,8 +5,7 @@ set -x
 docker run \
 	--rm \
 	-it \
-	--entrypoint /kaniko/socat \
-	-v /Users/keithduncan/Projects/iam-ssh-agent/agent/:/workspace \
+	-v $PWD:/workspace \
 	-v kanikoctl:/kanikoctl \
 	kaniko-socat \
 		unix-listen:/kanikoctl/socket,fork \
