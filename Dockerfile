@@ -16,7 +16,6 @@ RUN apt-get update && \
 ENV MUSL_VERSION      1.1.16
 ENV SOCAT_VERSION     1.7.3.2
 
-RUN mkdir /build
 COPY build/ /build/
 RUN /build/build
 
