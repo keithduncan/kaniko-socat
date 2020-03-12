@@ -23,4 +23,7 @@ FROM gcr.io/kaniko-project/executor:debug
 
 COPY --from=0 /build/socat-1.7.3.2/socat /kaniko/
 
+ARG COMMIT
+ENV BUILDKITE_ABOUT_IMAGE="keithduncan/kaniko-socat\ncommit: $COMMIT"
+
 ENTRYPOINT ["/kaniko/socat"]
