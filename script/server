@@ -10,4 +10,4 @@ docker run \
 	-v kanikoctl:/kanikoctl \
 	kaniko-socat \
 		unix-listen:/kanikoctl/socket,fork \
-		'exec:/busybox/sh,stderr'
+		'exec:sh,stderr'

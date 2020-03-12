@@ -23,3 +23,5 @@ RUN /build/build
 FROM gcr.io/kaniko-project/executor:debug
 
 COPY --from=0 /build/socat-1.7.3.2/socat /kaniko/
+
+ENTRYPOINT ["/kaniko/socat"]
