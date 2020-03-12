@@ -19,7 +19,7 @@ ENV SOCAT_VERSION     1.7.3.2
 COPY build/ /build/
 RUN /build/build
 
-FROM gcr.io/kaniko-project/executor:debug
+FROM gcr.io/kaniko-project/executor:debug-v0.18.0
 
 COPY --from=0 /build/socat-1.7.3.2/socat /kaniko/
 
