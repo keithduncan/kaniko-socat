@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Notice
+#
+# This script is a derivative of
+# https://github.com/aledbf/socat-static-binary/tree/master/build.sh
+
 set -e
 set -o pipefail
 
